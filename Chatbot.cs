@@ -159,7 +159,8 @@ namespace CyberSafetyBotGUI_Fixed
                 lowerInput.Contains("safe browsing") || lowerInput.Contains("link") ||
                 lowerInput.Contains("2fa") || lowerInput.Contains("social engineering") ||
                 lowerInput.Contains("malware") || lowerInput.Contains("scam") ||
-                lowerInput.Contains("hacked") || lowerInput.Contains("south africa"))
+                lowerInput.Contains("hacked") || lowerInput.Contains("south africa")  || 
+                lowerInput.Contains("phishing emails"))
             {
                 string response = responder.GetResponse(input, userName);
                 SendMessage(response);
