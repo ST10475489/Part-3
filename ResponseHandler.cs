@@ -1,0 +1,100 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace CyberSafetyBotGUI_Fixed
+{
+    public class ResponseHandler
+    {
+        private Dictionary<string, string> responses;
+        private Dictionary<string, string> topics;
+
+        public ResponseHandler()
+        {
+            responses = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            topics = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            SetupResponses();
+        }
+
+        private void SetupResponses()
+        {
+            // Basic responses
+            responses.Add("how are you", "I'm functioning well, thanks for asking! Ready to help you learn about cybersecurity.");
+            responses.Add("what is your purpose", "My purpose is to educate people about online threats like phishing, malware, and social engineering scams.");
+            responses.Add("what can i ask", "You can ask me about passwords, phishing, safe browsing, or suspicious links. I also have a quiz and task manager!");
+            responses.Add("help", "I can teach you about:\n- Creating strong passwords\n- Spotting phishing emails\n- Safe internet browsing\n- Recognizing fake links\n- Task management (add, view, complete tasks)\n- Cybersecurity quiz\n- Activity log\n\nJust type any topic or command!");
+            responses.Add("hello", "Hi there! Want to learn about staying safe online?");
+            responses.Add("hi", "Hello! I'm your cybersecurity guide. Ask me anything about online safety.");
+            responses.Add("thanks", "You're welcome! Stay safe out there.");
+            responses.Add("thank you", "Happy to help! Remember to always be careful online.");
+            responses.Add("south africa", "In South Africa, cyber attacks are increasing. Always be careful with suspicious SMS messages and emails.");
+            responses.Add("scam", "Scammers often create fake emergencies. Never send money or personal info to someone you don't know!");
+            responses.Add("hacked", "If you think you've been hacked: 1. Change your passwords immediately 2. Run a virus scan 3. Contact your bank 4. Report to the police");
+            responses.Add("2fa", "Two-Factor Authentication adds an extra layer of security. Always enable it when available!");
+            responses.Add("social engineering", "Social engineering is when attackers manipulate people into giving up confidential information. Always verify who you're talking to!");
+
+            // Cybersecurity topics
+            topics.Add("password", @"=== PASSWORD SAFETY TIPS ===
+
+            1. Use at least 12 characters in your passwords
+            2. Mix uppercase letters, lowercase letters, numbers, and symbols
+            3. Never reuse passwords across different websites
+            4. Use a password manager to keep track of everything
+            5. Turn on two-factor authentication whenever possible
+            6. Change your passwords every 3-6 months
+
+           Bad passwords to avoid: password123, qwerty, your name, or 12345678");
+
+            topics.Add("phishing", @"=== SPOTTING PHISHING SCAMS ===
+
+            Warning signs to look for:
+            • Emails asking you to 'verify your account immediately'
+            • Bad spelling and grammar mistakes
+            • Sender email addresses that look slightly wrong
+            • Links that don't match where they say they go
+            • Threats or urgent deadlines trying to scare you
+
+    If something seems suspicious, don't click anything! Contact the company directly using their official website.");
+
+            topics.Add("safe browsing", @"=== SAFE BROWSING PRACTICES ===
+
+        • Look for 'https://' and the padlock icon in your address bar
+        • Don't download files from websites you don't trust
+        • Keep your browser updated to the latest version
+        • Be careful what you click on social media
+        • Use different passwords for different accounts
+        • Clear your browsing history and cache regularly");
+
+            topics.Add("link", @"=== CHECKING SUSPICIOUS LINKS ===
+
+        Before clicking any link:
+        • Hover your mouse over it to see the real address
+        • Look for misspellings (like faceb00k.com instead of facebook.com)
+        • Be very careful with shortened links from bit.ly or tinyurl
+        • When in doubt, type the website address yourself
+        • Use a link scanner like VirusTotal to check suspicious links
+
+        One wrong click can lead to malware or stolen information!");
+        }
+
+        public string GetResponse(string input, string userName)
+        {
+            foreach (var response in responses)
+            {
+                if (input.ToLower().Contains(response.Key.ToLower()))
+                {
+                    return response.Value;
+                }
+            }
+
+            foreach (var topic in topics)
+            {
+                if (input.ToLower().Contains(topic.Key.ToLower()))
+                {
+                    return topic.Value;
+                }
+            }
+
+            return "I'm not sure I understand. Try asking about passwords, phishing, safe browsing, or links. Type 'help' for options.";
+        }
+    }
+}
