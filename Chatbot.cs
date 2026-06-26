@@ -148,7 +148,7 @@ namespace CyberSafetyBotGUI_Fixed
                 return;
             }
 
-            if (lowerInput.Contains("thank"))
+            if (lowerInput.Contains("thank") || lowerInput.Contains("thank you"))
             {
                 SendMessage($"You're welcome {userName}! Stay safe online!");
                 return;
