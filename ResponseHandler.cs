@@ -74,6 +74,11 @@ namespace CyberSafetyBotGUI_Fixed
         • Use a link scanner like VirusTotal to check suspicious links
 
         One wrong click can lead to malware or stolen information!");
+
+       topics.Add("phishing emails", @"=== CHECKING SUSPICIOUS EMAILS ===
+
+       Before clicking any email:
+       • Check for red flags in emails such as generic greetings, urgent language, spelling mistakes, mismatched sender addresses, and unexpected attachments or links.");
         }
 
         public string GetResponse(string input, string userName)
